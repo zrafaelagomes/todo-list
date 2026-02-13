@@ -3,13 +3,15 @@ import { themeConfig } from "../../contexts/theme";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import type { Todo } from "../../hooks/useTodo";
 import IconCheck from "/images/icon-check.svg";
+import IconCross from "/images/icon-cross.svg";
 
 interface TodoListProps {
     todoList: Todo[];
     toggleTodoCompleted: (id: number) => void;
     setFilter: (filter: "all" | "active" | "completed") => void;
     filter: "all" | "active" | "completed";
-    clearCompleted: () => void
+    clearCompleted: () => void;
+    removeTodo: (id: number) => void;
 }
 
 const TodoList = ({
@@ -17,7 +19,8 @@ const TodoList = ({
     toggleTodoCompleted,
     setFilter,
     filter,
-    clearCompleted
+    clearCompleted,
+    removeTodo
 }: TodoListProps) => {
     const { theme } = useContext(ThemeContext);
 
@@ -53,11 +56,19 @@ const TodoList = ({
                                 </span>
 
                                 <p
-                                    className={`${themeConfig[theme].todo.textColor} ${todo.completed ? "line-through opacity-50" : ""
+                                    className={`flex-1 ${themeConfig[theme].todo.textColor} ${todo.completed ? "line-through opacity-50" : ""
                                         } `}
                                 >
                                     {todo.text}
                                 </p>
+
+                                <button
+                                    onClick={() => removeTodo(todo.id)}
+                                    className="cursor-pointer"
+                                    aria-label={`Remover tarefa ${todo.text}`}
+                                >
+                                    <img src={IconCross} alt="Remover tarefa" />
+                                </button>
                             </div>
                         </li>
                     ))}
