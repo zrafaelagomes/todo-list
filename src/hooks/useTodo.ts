@@ -6,15 +6,15 @@ export interface Todo {
     completed: boolean;
 }
 
-// async function getTodos(): Promise<Todo[]> {
-//     await new Promise((resolve) => setTimeout(resolve, 800));
+async function getTodos(): Promise<Todo[]> {
+    await new Promise((resolve) => setTimeout(resolve, 800));
 
-//     return [
-//         { id: 1, text: "Aprender useEffect", completed: false },
-//         { id: 2, text: "Aprender React", completed: false },
-//         { id: 3, text: "Aprender JS", completed: true },
-//     ];
-// }
+    return [
+        { id: 1, text: "Aprender useEffect", completed: false },
+        { id: 2, text: "Aprender React", completed: false },
+        { id: 3, text: "Aprender JS", completed: true },
+    ];
+}
 
 export const useTodo = () => {
     const [todoList, setTodoList] = useState<Todo[]>([]);
