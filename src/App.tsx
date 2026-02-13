@@ -11,6 +11,7 @@ function App() {
     toggleTodoCompleted,
     filteredTodos,
     clearCompleted,
+    removeTodo,
     setFilter,
     filter
   } = useTodo();
@@ -27,6 +28,7 @@ function App() {
         setFilter={setFilter}
         filter={filter}
         clearCompleted={clearCompleted}
+        removeTodo={removeTodo}
       ></TodoList>
     </TodoContainer>
   );
