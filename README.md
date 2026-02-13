@@ -1,73 +1,85 @@
 # React + TypeScript + Vite
+# ✅ Todo List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação de lista de tarefas construída com **React + TypeScript + Vite** e estilizada com **Tailwind CSS v4**.
 
-Currently, two official plugins are available:
+## 📸 Visão geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto permite:
 
-## React Compiler
+- Adicionar novas tarefas.
+- Marcar tarefas como concluídas.
+- Filtrar tarefas por status (**All**, **Active**, **Completed**).
+- Limpar tarefas concluídas com um clique.
+- Alternar entre tema **dark** e **light**.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+As tarefas iniciais são carregadas de forma assíncrona (simulando uma chamada de API).
 
-## Expanding the ESLint configuration
+## 🧱 Tecnologias
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS 4
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Como executar o projeto
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 18+ (recomendado)
+- npm
+### Instalação
+```bash
+npm install
+```
+### Ambiente de desenvolvimento
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+A aplicação ficará disponível em `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Build de produção
+```bash
+npm run build
 ```
+### Preview da build
+```bash
+npm run preview
+```
+### Lint
+```bash
+npm run lint
+
+## 📁 Estrutura principal
+
+```text
+src/
+  components/
+    TodoContainer/
+    TodoForm/
+    TodoHeader/
+    TodoList/
+  contexts/
+    ThemeContext.ts
+    ThemeProvider.tsx
+    theme.ts
+  hooks/
+    useTodo.ts
+  styles/
+    globals.css
+  App.tsx
+  main.tsx
+```
+
+## 🧠 Regras de negócio implementadas
+
+- O hook `useTodo` centraliza o estado da lista, filtro e ações.
+- Ao adicionar uma tarefa, o filtro volta para `all`.
+- O botão de conclusão alterna o estado da tarefa (`completed`).
+- `Clear Completed` remove somente tarefas já concluídas.
+
+## 🎨 Temas
+
+A troca de tema é feita via `ThemeContext` + `ThemeProvider`, e os estilos variam com base no tema atual.
+
+## 📝 Licença
+
+Este projeto está sem licença definida no momento.
